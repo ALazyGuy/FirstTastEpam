@@ -16,27 +16,19 @@ public class SearchServiceTest {
         arrayEntity = new ArrayEntity(new int[]{5, 1, -6, 0, 45, 0, -19, 3});
     }
 
-    @Test
+    @Test(expectedExceptions = {IllegalArgumentException.class})
     public void findMaxValueTest(){
         int expected = 45;
         int result = SearchService.findMaxValue(arrayEntity);
         AssertJUnit.assertEquals(expected, result);
-    }
-
-    @Test
-    public void findMinValueTest(){
-        int expected = -19;
-        int result = SearchService.findMinValue(arrayEntity);
-        AssertJUnit.assertEquals(expected, result);
-    }
-
-    @Test(expectedExceptions = {IllegalArgumentException.class})
-    public void findMaxValueExceptionTest(){
         SearchService.findMaxValue(null);
     }
 
     @Test(expectedExceptions = {IllegalArgumentException.class})
-    public void findMinValueExceptionTest(){
+    public void findMinValueTest(){
+        int expected = -19;
+        int result = SearchService.findMinValue(arrayEntity);
+        AssertJUnit.assertEquals(expected, result);
         SearchService.findMinValue(null);
     }
 
