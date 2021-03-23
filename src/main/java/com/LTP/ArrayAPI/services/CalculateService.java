@@ -72,7 +72,7 @@ public class CalculateService {
         if(arrayEntity == null) throw new IllegalArgumentException("Input array cannot be null");
         if(arrayEntity.getArray().length == 0) return 0;
         int result = (int)Arrays.stream(arrayEntity.getArray()).filter(a -> a >= 0).count();
-        LOGGER.log(Level.INFO, String.format("Count of positive numbers in %s is %d"), arrayEntity.toString(), result);
+        LOGGER.log(Level.INFO, String.format("Count of positive numbers in %s is %d", arrayEntity.toString(), result));
         return result;
     }
 
@@ -85,7 +85,7 @@ public class CalculateService {
     public static int countNegatives(ArrayEntity arrayEntity){
         if(arrayEntity == null) throw new IllegalArgumentException("Input array cannot be null");
         int result = arrayEntity.getArray().length - countPositives(arrayEntity);
-        LOGGER.log(Level.INFO, String.format("Count of negative numbers in %s is %d"), arrayEntity.toString(), result);
+        LOGGER.log(Level.INFO, String.format("Count of negative numbers in %s is %d", arrayEntity.toString(), result));
         return result;
     }
 
