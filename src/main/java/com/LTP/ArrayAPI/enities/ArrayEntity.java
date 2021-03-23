@@ -1,5 +1,9 @@
 package com.LTP.ArrayAPI.enities;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -14,6 +18,8 @@ import java.util.stream.Collectors;
 
 public class ArrayEntity {
 
+    private static final Logger LOGGER = LogManager.getLogger(ArrayEntity.class);
+
     /** Data container */
     private int array[];
 
@@ -24,6 +30,7 @@ public class ArrayEntity {
      */
     public ArrayEntity(int size){
         this.array = new int[size];
+        LOGGER.log(Level.INFO, "Array initialized successfully");
     }
 
     /**
@@ -33,6 +40,7 @@ public class ArrayEntity {
      */
     public ArrayEntity(int array[]){
         this.array = array;
+        LOGGER.log(Level.INFO, "Array initialized successfully");
     }
 
     /**
