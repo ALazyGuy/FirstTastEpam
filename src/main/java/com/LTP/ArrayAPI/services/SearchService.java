@@ -29,6 +29,7 @@ public class SearchService {
      * @return Return maximal value in array
      */
     public static int findMaxValue(ArrayEntity arrayEntity){
+        if(arrayEntity == null || arrayEntity.getArray().length == 0) throw new IllegalArgumentException("Input array can't be empty");
         int arr[] = arrayEntity.getArray();
         int max = arr[0];
         for(int d = 1; d < arr.length; d++){
@@ -46,6 +47,7 @@ public class SearchService {
      * @return Return minimal value in array
      */
     public static int findMinValue(ArrayEntity arrayEntity){
+        if(arrayEntity == null || arrayEntity.getArray().length == 0) throw new IllegalArgumentException("Input array can't be empty");
         int arr[] = arrayEntity.getArray();
         int min = arr[0];
         for(int d = 1; d < arr.length; d++){
