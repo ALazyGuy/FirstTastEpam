@@ -1,5 +1,8 @@
 package com.LTP.ArrayAPI.enities;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 /**
  * ArrayEntity
  *
@@ -48,4 +51,22 @@ public class ArrayEntity {
         return this.array;
     }
 
+    @Override
+    public String toString(){
+        return String.format("{ %s }", Arrays.stream(this.array).mapToObj(a -> Integer.toString(a)).collect(Collectors.joining(", ")));
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == this) return true;
+        if(o.getClass() != this.getClass()) return false;
+        ArrayEntity other = (ArrayEntity)o;
+        if(!other.getArray().equals(this.array)) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return 17 * 31 + this.array.hashCode();
+    }
 }
