@@ -1,4 +1,4 @@
-package test.com.LTP.ArrayAPI.services.imple;
+package test.com.LTP.ArrayAPI.services.impl;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
 import com.LTP.ArrayAPI.services.ISortingService;
