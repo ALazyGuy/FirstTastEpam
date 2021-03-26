@@ -18,9 +18,22 @@ import org.apache.logging.log4j.Logger;
 public class SearchServiceImpl implements ISearchService {
 
     private static final Logger LOGGER = LogManager.getLogger(SearchServiceImpl.class);
+    private static SearchServiceImpl instance = null;
 
     /** Private constructor for singleton pattern */
     private SearchServiceImpl(){}
+
+    /**
+     * getInstance method allows to get class instance in singleton pattern
+     * @return static instance of current class
+     */
+    public static SearchServiceImpl getInstance(){
+        if(instance == null){
+            instance = new SearchServiceImpl();
+        }
+
+        return instance;
+    }
 
     /**
      * Find maximal value in input array {@link ArrayEntity}

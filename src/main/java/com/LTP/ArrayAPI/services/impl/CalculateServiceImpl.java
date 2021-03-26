@@ -17,9 +17,21 @@ import java.util.Arrays;
 public class CalculateServiceImpl implements ICalculateService {
 
     private static final Logger LOGGER = LogManager.getLogger(CalculateServiceImpl.class);
+    private static CalculateServiceImpl instance = null;
 
     /** Private constructor for singleton pattern */
     private CalculateServiceImpl(){}
+
+    /**
+     * getInstance method allows to get class instance in singleton pattern
+     * @return static instance of current class
+     */
+    public static CalculateServiceImpl getInstance(){
+        if(instance == null){
+            instance = new CalculateServiceImpl();
+        }
+        return instance;
+    }
 
     /**
      * average method allows you to find average of an array

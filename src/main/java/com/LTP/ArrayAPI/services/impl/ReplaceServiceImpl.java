@@ -21,9 +21,22 @@ import java.util.function.Predicate;
 public class ReplaceServiceImpl implements IReplaceService {
 
     private static final Logger LOGGER = LogManager.getLogger(ReplaceServiceImpl.class);
+    private static ReplaceServiceImpl instance = null;
 
     /** Private constructor for singleton pattern */
     private ReplaceServiceImpl(){}
+
+    /**
+     * getInstance method allows to get class instance in singleton pattern
+     * @return static instance of current class
+     */
+    public static ReplaceServiceImpl getInstance(){
+        if(instance == null){
+            instance = new ReplaceServiceImpl();
+        }
+
+        return instance;
+    }
 
     /**
      * replaceByValue method allows to replace every element that suitable by condition
