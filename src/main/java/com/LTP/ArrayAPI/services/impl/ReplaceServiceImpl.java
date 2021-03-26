@@ -1,6 +1,7 @@
-package com.LTP.ArrayAPI.services;
+package com.LTP.ArrayAPI.services.impl;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
+import com.LTP.ArrayAPI.services.IReplaceService;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,12 +18,12 @@ import java.util.function.Predicate;
  * @author Daniil Selin
  */
 
-public class ReplaceService {
+public class ReplaceServiceImpl implements IReplaceService {
 
-    private static final Logger LOGGER = LogManager.getLogger(ReplaceService.class);
+    private static final Logger LOGGER = LogManager.getLogger(ReplaceServiceImpl.class);
 
     /** Private constructor for singleton pattern */
-    private ReplaceService(){}
+    private ReplaceServiceImpl(){}
 
     /**
      * replaceByValue method allows to replace every element that suitable by condition
@@ -31,7 +32,8 @@ public class ReplaceService {
      * @param condition - Condition to choose elements
      * @param newValue - A new value for every element suitable by condition
      */
-    public static void replaceByValue(ArrayEntity entity, Predicate<Integer> condition, int newValue){
+    @Override
+    public void replaceByValue(ArrayEntity entity, Predicate<Integer> condition, int newValue){
         if(entity == null) throw new IllegalArgumentException("Input array cannot be null");
         if(condition == null) throw new IllegalArgumentException("Condition cannot be null");
         String input = entity.toString();
@@ -52,7 +54,8 @@ public class ReplaceService {
      * @param condition - Condition to choose elements
      * @param function - Function to calculate a new value for every element suitable by condition
      */
-    public static void replace(ArrayEntity entity, Predicate<Integer> condition, Function<Integer, Integer> function){
+    @Override
+    public void replace(ArrayEntity entity, Predicate<Integer> condition, Function<Integer, Integer> function){
         if(entity == null) throw new IllegalArgumentException("Input array cannot be null");
         if(condition == null) throw new IllegalArgumentException("Condition cannot be null");
         if(function == null) throw new IllegalArgumentException("Function cannot be null");

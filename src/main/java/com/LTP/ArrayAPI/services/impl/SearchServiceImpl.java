@@ -1,6 +1,7 @@
-package com.LTP.ArrayAPI.services;
+package com.LTP.ArrayAPI.services.impl;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
+import com.LTP.ArrayAPI.services.ISearchService;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,21 +15,22 @@ import org.apache.logging.log4j.Logger;
  * @author Daniil Selin
  */
 
-public class SearchService {
+public class SearchServiceImpl implements ISearchService {
 
-    private static final Logger LOGGER = LogManager.getLogger(SearchService.class);
+    private static final Logger LOGGER = LogManager.getLogger(SearchServiceImpl.class);
 
     /** Private constructor for singleton pattern */
-    private SearchService(){}
+    private SearchServiceImpl(){}
 
     /**
      * Find maximal value in input array {@link ArrayEntity}
      *
-     * @see SearchService#findMinValue(ArrayEntity)
+     * @see SearchServiceImpl#findMinValue(ArrayEntity)
      * @param arrayEntity input array
      * @return Return maximal value in array
      */
-    public static int findMaxValue(ArrayEntity arrayEntity){
+    @Override
+    public int findMaxValue(ArrayEntity arrayEntity){
         if(arrayEntity == null || arrayEntity.getArray().length == 0) throw new IllegalArgumentException("Input array can't be empty");
         int arr[] = arrayEntity.getArray();
         int max = arr[0];
@@ -42,11 +44,12 @@ public class SearchService {
     /**
      * Find minimal value in input array {@link ArrayEntity}
      *
-     * @see SearchService#findMaxValue(ArrayEntity)
+     * @see SearchServiceImpl#findMaxValue(ArrayEntity)
      * @param arrayEntity input array
      * @return Return minimal value in array
      */
-    public static int findMinValue(ArrayEntity arrayEntity){
+    @Override
+    public int findMinValue(ArrayEntity arrayEntity){
         if(arrayEntity == null || arrayEntity.getArray().length == 0) throw new IllegalArgumentException("Input array can't be empty");
         int arr[] = arrayEntity.getArray();
         int min = arr[0];
