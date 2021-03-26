@@ -1,4 +1,4 @@
-package test.com.LTP.ArrayAPI.services;
+package test.com.LTP.ArrayAPI.services.imple;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
 import com.LTP.ArrayAPI.services.ICalculateService;
@@ -8,7 +8,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class CalculateServiceTest {
+public class CalculateServiceImplTest {
 
     private ArrayEntity arrayEntity;
     private ICalculateService calculateService;

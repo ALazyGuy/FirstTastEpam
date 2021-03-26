@@ -1,4 +1,4 @@
-package test.com.LTP.ArrayAPI.services;
+package test.com.LTP.ArrayAPI.services.imple;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
 import com.LTP.ArrayAPI.services.IReplaceService;
@@ -8,7 +8,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ReplaceServiceTest {
+public class ReplaceServiceImplTest {
 
     private ArrayEntity arrayEntity;
     private IReplaceService replaceService;
