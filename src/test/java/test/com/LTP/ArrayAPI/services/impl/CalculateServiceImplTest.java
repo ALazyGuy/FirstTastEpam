@@ -20,7 +20,7 @@ public class CalculateServiceImplTest {
         calculateService = CalculateServiceImpl.getInstance();
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expectedExceptions = ArrayException.class)
     public void averageTest() throws ArrayException {
         double result = calculateService.average(arrayEntity);
         double expected = 4.2;
@@ -28,7 +28,7 @@ public class CalculateServiceImplTest {
         calculateService.average(null);
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expectedExceptions = ArrayException.class)
     public void sumTest() throws ArrayException{
         int result = calculateService.sum(arrayEntity);
         int expected = 21;
@@ -36,7 +36,7 @@ public class CalculateServiceImplTest {
         calculateService.sum(null);
     }
 
-    @Test(expectedExceptions = {IllegalArgumentException.class, IndexOutOfBoundsException.class})
+    @Test(expectedExceptions = {ArrayException.class})
     public void sumBoundsTest() throws ArrayException {
         int result = calculateService.sum(arrayEntity, 1, 3);
         int expected = 14;
@@ -44,7 +44,7 @@ public class CalculateServiceImplTest {
         calculateService.sum(null, -1, -1);
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expectedExceptions = ArrayException.class)
     public void positivesTest() throws ArrayException {
         int result = calculateService.countPositives(arrayEntity);
         int expected = 5;
@@ -52,7 +52,7 @@ public class CalculateServiceImplTest {
         calculateService.countPositives(null);
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class)
+    @Test(expectedExceptions = ArrayException.class)
     public void negativesTest() throws ArrayException {
         int result = calculateService.countNegatives(arrayEntity);
         int expected = 0;

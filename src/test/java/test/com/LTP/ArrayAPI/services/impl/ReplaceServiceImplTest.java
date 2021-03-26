@@ -20,14 +20,14 @@ public class ReplaceServiceImplTest {
         replaceService = ReplaceServiceImpl.getInstance();
     }
 
-    @Test(expectedExceptions = {IllegalArgumentException.class})
+    @Test(expectedExceptions = {ArrayException.class})
     public void replaceByValueTest() throws ArrayException  {
         replaceService.replaceByValue(arrayEntity, a -> a % 2 == 0, -100);
         AssertJUnit.assertArrayEquals(arrayEntity.getArray(), new int[]{5, 1, -100, -100, 45, -100, -19, -100});
         replaceService.replaceByValue(null, null, -1);
     }
 
-    @Test(expectedExceptions = {IllegalArgumentException.class})
+    @Test(expectedExceptions = {ArrayException.class})
     public void replaceTest() throws ArrayException {
         replaceService.replace(arrayEntity, a -> a % 2 == 0, a -> a * 2);
         AssertJUnit.assertArrayEquals(arrayEntity.getArray(), new int[]{5, 1, -12, 0, 45, 0, -19, 4});

@@ -20,7 +20,7 @@ public class SearchServiceImplTest {
         searchService = SearchServiceImpl.getInstance();
     }
 
-    @Test(expectedExceptions = {IllegalArgumentException.class})
+    @Test(expectedExceptions = {ArrayException.class})
     public void findMaxValueTest() throws ArrayException  {
         int expected = 45;
         int result = searchService.findMaxValue(arrayEntity);
@@ -28,7 +28,7 @@ public class SearchServiceImplTest {
         searchService.findMaxValue(null);
     }
 
-    @Test(expectedExceptions = {IllegalArgumentException.class})
+    @Test(expectedExceptions = {ArrayException.class})
     public void findMinValueTest() throws ArrayException {
         int expected = -19;
         int result = searchService.findMinValue(arrayEntity);
