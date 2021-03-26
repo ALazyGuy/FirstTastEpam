@@ -1,7 +1,9 @@
 package com.LTP.ArrayAPI.services.impl;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
+import com.LTP.ArrayAPI.exceptions.ArrayException;
 import com.LTP.ArrayAPI.services.ISortingService;
+import com.LTP.ArrayAPI.validators.ArrayValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,7 +40,8 @@ public class SortingServiceImpl implements ISortingService {
      * @param arrayEntity - input array
      */
     @Override
-    public void bubbleSort(ArrayEntity arrayEntity) {
+    public void bubbleSort(ArrayEntity arrayEntity) throws ArrayException {
+        ArrayValidator.validateArray(arrayEntity);
         int[] array = arrayEntity.getArray();
 
         boolean sorted = false;
@@ -64,7 +67,8 @@ public class SortingServiceImpl implements ISortingService {
      * @param arrayEntity - input array
      */
     @Override
-    public void insertionSort(ArrayEntity arrayEntity) {
+    public void insertionSort(ArrayEntity arrayEntity) throws ArrayException{
+        ArrayValidator.validateArray(arrayEntity);
         int[] array = arrayEntity.getArray();
 
         for (int i = 1; i < array.length; i++) {
@@ -86,7 +90,8 @@ public class SortingServiceImpl implements ISortingService {
      * @param arrayEntity - input array
      */
     @Override
-    public void selectionSort(ArrayEntity arrayEntity) {
+    public void selectionSort(ArrayEntity arrayEntity) throws ArrayException {
+        ArrayValidator.validateArray(arrayEntity);
         int[] array = arrayEntity.getArray();
 
         for (int i = 0; i < array.length; i++) {

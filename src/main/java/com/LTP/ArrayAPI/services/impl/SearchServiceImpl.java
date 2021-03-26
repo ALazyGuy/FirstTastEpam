@@ -1,7 +1,9 @@
 package com.LTP.ArrayAPI.services.impl;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
+import com.LTP.ArrayAPI.exceptions.ArrayException;
 import com.LTP.ArrayAPI.services.ISearchService;
+import com.LTP.ArrayAPI.validators.ArrayValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,8 +45,8 @@ public class SearchServiceImpl implements ISearchService {
      * @return Return maximal value in array
      */
     @Override
-    public int findMaxValue(ArrayEntity arrayEntity){
-        if(arrayEntity == null || arrayEntity.getArray().length == 0) throw new IllegalArgumentException("Input array can't be empty");
+    public int findMaxValue(ArrayEntity arrayEntity) throws ArrayException {
+        ArrayValidator.validateArray(arrayEntity);
         int arr[] = arrayEntity.getArray();
         int max = arr[0];
         for(int d = 1; d < arr.length; d++){
@@ -62,8 +64,8 @@ public class SearchServiceImpl implements ISearchService {
      * @return Return minimal value in array
      */
     @Override
-    public int findMinValue(ArrayEntity arrayEntity){
-        if(arrayEntity == null || arrayEntity.getArray().length == 0) throw new IllegalArgumentException("Input array can't be empty");
+    public int findMinValue(ArrayEntity arrayEntity) throws ArrayException{
+        ArrayValidator.validateArray(arrayEntity);
         int arr[] = arrayEntity.getArray();
         int min = arr[0];
         for(int d = 1; d < arr.length; d++){

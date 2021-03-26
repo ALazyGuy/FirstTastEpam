@@ -1,6 +1,7 @@
 package test.com.LTP.ArrayAPI.services.impl;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
+import com.LTP.ArrayAPI.exceptions.ArrayException;
 import com.LTP.ArrayAPI.services.ICalculateService;
 import com.LTP.ArrayAPI.services.impl.CalculateServiceImpl;
 import org.testng.AssertJUnit;
@@ -20,7 +21,7 @@ public class CalculateServiceImplTest {
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void averageTest(){
+    public void averageTest() throws ArrayException {
         double result = calculateService.average(arrayEntity);
         double expected = 4.2;
         AssertJUnit.assertEquals(expected, result);
@@ -28,7 +29,7 @@ public class CalculateServiceImplTest {
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void sumTest(){
+    public void sumTest() throws ArrayException{
         int result = calculateService.sum(arrayEntity);
         int expected = 21;
         AssertJUnit.assertEquals(expected, result);
@@ -36,7 +37,7 @@ public class CalculateServiceImplTest {
     }
 
     @Test(expectedExceptions = {IllegalArgumentException.class, IndexOutOfBoundsException.class})
-    public void sumBoundsTest(){
+    public void sumBoundsTest() throws ArrayException {
         int result = calculateService.sum(arrayEntity, 1, 3);
         int expected = 14;
         AssertJUnit.assertEquals(expected, result);
@@ -44,7 +45,7 @@ public class CalculateServiceImplTest {
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void positivesTest(){
+    public void positivesTest() throws ArrayException {
         int result = calculateService.countPositives(arrayEntity);
         int expected = 5;
         AssertJUnit.assertEquals(expected, result);
@@ -52,7 +53,7 @@ public class CalculateServiceImplTest {
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void negativesTest(){
+    public void negativesTest() throws ArrayException {
         int result = calculateService.countNegatives(arrayEntity);
         int expected = 0;
         AssertJUnit.assertEquals(expected, result);

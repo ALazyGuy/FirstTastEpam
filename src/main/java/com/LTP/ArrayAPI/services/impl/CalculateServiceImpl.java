@@ -1,7 +1,9 @@
 package com.LTP.ArrayAPI.services.impl;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
+import com.LTP.ArrayAPI.exceptions.ArrayException;
 import com.LTP.ArrayAPI.services.ICalculateService;
+import com.LTP.ArrayAPI.validators.ArrayValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,9 +41,8 @@ public class CalculateServiceImpl implements ICalculateService {
      * @return return average of an input array
      */
     @Override
-    public double average(ArrayEntity arrayEntity){
-        if(arrayEntity == null) throw new IllegalArgumentException("Input array cannot be null");
-        if(arrayEntity.getArray().length == 0) return .0;
+    public double average(ArrayEntity arrayEntity) throws ArrayException {
+        ArrayValidator.validateArray(arrayEntity);
         double result = Arrays.stream(arrayEntity.getArray()).sum();
         LOGGER.log(Level.INFO, String.format("Average of an %s is %f", arrayEntity.toString(), result / arrayEntity.getArray().length));
         return result / arrayEntity.getArray().length;
@@ -54,8 +55,8 @@ public class CalculateServiceImpl implements ICalculateService {
      * @see CalculateServiceImpl#sum(ArrayEntity, int, int)
      */
     @Override
-    public int sum(ArrayEntity arrayEntity){
-        if(arrayEntity == null) throw new IllegalArgumentException("Input array cannot be null");
+    public int sum(ArrayEntity arrayEntity) throws ArrayException{
+        ArrayValidator.validateArray(arrayEntity);
         return sum(arrayEntity, 0, arrayEntity.getArray().length - 1);
     }
 
@@ -66,9 +67,9 @@ public class CalculateServiceImpl implements ICalculateService {
      * @see CalculateServiceImpl#sum(ArrayEntity)
      */
     @Override
-    public int sum(ArrayEntity arrayEntity, int start, int stop){
-        if(arrayEntity == null) throw new IllegalArgumentException("Input array cannot be null");
-        if(start < 0 || start >= stop || stop >= arrayEntity.getArray().length) throw new IndexOutOfBoundsException("Invalid bounds in input array");
+    public int sum(ArrayEntity arrayEntity, int start, int stop) throws ArrayException{
+        ArrayValidator.validateArray(arrayEntity);
+        if(start < 0 || start >= stop || stop >= arrayEntity.getArray().length) throw new ArrayException("Invalid bounds in input array");
         int result = Arrays.stream(arrayEntity.getArray()).skip(start).limit(stop - start + 1).sum();
         LOGGER.log(Level.INFO, String.format("Sum of %s from index %d to index %d is %d",
                                              arrayEntity.toString(),
@@ -85,9 +86,8 @@ public class CalculateServiceImpl implements ICalculateService {
      * @see CalculateServiceImpl#countNegatives(ArrayEntity)
      */
     @Override
-    public int countPositives(ArrayEntity arrayEntity){
-        if(arrayEntity == null) throw new IllegalArgumentException("Input array cannot be null");
-        if(arrayEntity.getArray().length == 0) return 0;
+    public int countPositives(ArrayEntity arrayEntity) throws ArrayException{
+        ArrayValidator.validateArray(arrayEntity);
         int result = (int)Arrays.stream(arrayEntity.getArray()).filter(a -> a >= 0).count();
         LOGGER.log(Level.INFO, String.format("Count of positive numbers in %s is %d", arrayEntity.toString(), result));
         return result;
@@ -100,8 +100,8 @@ public class CalculateServiceImpl implements ICalculateService {
      * @see CalculateServiceImpl#countPositives(ArrayEntity)
      */
     @Override
-    public int countNegatives(ArrayEntity arrayEntity){
-        if(arrayEntity == null) throw new IllegalArgumentException("Input array cannot be null");
+    public int countNegatives(ArrayEntity arrayEntity) throws ArrayException{
+        ArrayValidator.validateArray(arrayEntity);
         int result = arrayEntity.getArray().length - countPositives(arrayEntity);
         LOGGER.log(Level.INFO, String.format("Count of negative numbers in %s is %d", arrayEntity.toString(), result));
         return result;

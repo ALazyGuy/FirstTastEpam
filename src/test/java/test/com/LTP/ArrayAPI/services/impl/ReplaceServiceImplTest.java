@@ -1,6 +1,7 @@
 package test.com.LTP.ArrayAPI.services.impl;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
+import com.LTP.ArrayAPI.exceptions.ArrayException;
 import com.LTP.ArrayAPI.services.IReplaceService;
 import com.LTP.ArrayAPI.services.impl.ReplaceServiceImpl;
 import org.testng.AssertJUnit;
@@ -20,14 +21,14 @@ public class ReplaceServiceImplTest {
     }
 
     @Test(expectedExceptions = {IllegalArgumentException.class})
-    public void replaceByValueTest(){
+    public void replaceByValueTest() throws ArrayException  {
         replaceService.replaceByValue(arrayEntity, a -> a % 2 == 0, -100);
         AssertJUnit.assertArrayEquals(arrayEntity.getArray(), new int[]{5, 1, -100, -100, 45, -100, -19, -100});
         replaceService.replaceByValue(null, null, -1);
     }
 
     @Test(expectedExceptions = {IllegalArgumentException.class})
-    public void replaceTest(){
+    public void replaceTest() throws ArrayException {
         replaceService.replace(arrayEntity, a -> a % 2 == 0, a -> a * 2);
         AssertJUnit.assertArrayEquals(arrayEntity.getArray(), new int[]{5, 1, -12, 0, 45, 0, -19, 4});
         replaceService.replace(null, null, null);

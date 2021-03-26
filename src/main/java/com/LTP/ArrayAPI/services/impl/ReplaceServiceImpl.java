@@ -1,7 +1,9 @@
 package com.LTP.ArrayAPI.services.impl;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
+import com.LTP.ArrayAPI.exceptions.ArrayException;
 import com.LTP.ArrayAPI.services.IReplaceService;
+import com.LTP.ArrayAPI.validators.ArrayValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -46,9 +48,9 @@ public class ReplaceServiceImpl implements IReplaceService {
      * @param newValue - A new value for every element suitable by condition
      */
     @Override
-    public void replaceByValue(ArrayEntity entity, Predicate<Integer> condition, int newValue){
-        if(entity == null) throw new IllegalArgumentException("Input array cannot be null");
-        if(condition == null) throw new IllegalArgumentException("Condition cannot be null");
+    public void replaceByValue(ArrayEntity entity, Predicate<Integer> condition, int newValue) throws ArrayException {
+        ArrayValidator.validateArray(entity);
+        if(condition == null) throw new ArrayException("Condition cannot be null");
         String input = entity.toString();
         int[] arr = entity.getArray();
         for(int d = 0; d < arr.length; d++){
@@ -68,10 +70,10 @@ public class ReplaceServiceImpl implements IReplaceService {
      * @param function - Function to calculate a new value for every element suitable by condition
      */
     @Override
-    public void replace(ArrayEntity entity, Predicate<Integer> condition, Function<Integer, Integer> function){
-        if(entity == null) throw new IllegalArgumentException("Input array cannot be null");
-        if(condition == null) throw new IllegalArgumentException("Condition cannot be null");
-        if(function == null) throw new IllegalArgumentException("Function cannot be null");
+    public void replace(ArrayEntity entity, Predicate<Integer> condition, Function<Integer, Integer> function) throws ArrayException{
+        ArrayValidator.validateArray(entity);
+        if(condition == null) throw new ArrayException("Condition cannot be null");
+        if(function == null) throw new ArrayException("Function cannot be null");
         String input = entity.toString();
         int[] arr = entity.getArray();
         for(int d = 0; d < arr.length; d++){

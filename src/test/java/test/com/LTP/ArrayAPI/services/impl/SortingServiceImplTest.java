@@ -1,6 +1,7 @@
 package test.com.LTP.ArrayAPI.services.impl;
 
 import com.LTP.ArrayAPI.enities.ArrayEntity;
+import com.LTP.ArrayAPI.exceptions.ArrayException;
 import com.LTP.ArrayAPI.services.ISortingService;
 import com.LTP.ArrayAPI.services.impl.SortingServiceImpl;
 import org.testng.AssertJUnit;
@@ -24,25 +25,28 @@ public class SortingServiceImplTest {
         arrayEntity = new ArrayEntity(new int[]{3, 1, 7, 4, 1, -17});
     }
 
-    @Test
-    public void bubbleSortTest(){
+    @Test(expectedExceptions = ArrayException.class)
+    public void bubbleSortTest() throws ArrayException  {
         int[] expected = {-17, 1, 1, 3, 4, 7};
         sortingService.bubbleSort(arrayEntity);
         AssertJUnit.assertArrayEquals(expected, arrayEntity.getArray());
+        sortingService.bubbleSort(null);
     }
 
-    @Test
-    public void insertionSortTest(){
+    @Test(expectedExceptions = ArrayException.class)
+    public void insertionSortTest() throws ArrayException {
         int[] expected = {-17, 1, 1, 3, 4, 7};
         sortingService.insertionSort(arrayEntity);
         AssertJUnit.assertArrayEquals(expected, arrayEntity.getArray());
+        sortingService.insertionSort(null);
     }
 
-    @Test
-    public void selectionSortTest(){
+    @Test(expectedExceptions = ArrayException.class)
+    public void selectionSortTest() throws ArrayException {
         int[] expected = {-17, 1, 1, 3, 4, 7};
         sortingService.selectionSort(arrayEntity);
         AssertJUnit.assertArrayEquals(expected, arrayEntity.getArray());
+        sortingService.selectionSort(null);
     }
 
     @AfterClass
