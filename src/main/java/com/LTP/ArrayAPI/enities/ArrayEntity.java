@@ -39,7 +39,7 @@ public class ArrayEntity {
      * @see ArrayEntity#ArrayEntity(int[])
      */
     public ArrayEntity(int array[]){
-        this.array = array;
+        this.array = Arrays.copyOf(array, array.length);
         LOGGER.log(Level.INFO, "Array initialized successfully");
     }
 
@@ -48,7 +48,7 @@ public class ArrayEntity {
      * @param array - new array to be stored
      */
     public void setArray(int array[]){
-        this.array = array;
+        this.array = Arrays.copyOf(array, array.length);
     }
 
     /**
@@ -56,7 +56,7 @@ public class ArrayEntity {
      * @return Returns stored data
      */
     public int[] getArray(){
-        return this.array;
+        return Arrays.copyOf(array, array.length);
     }
 
     @Override
