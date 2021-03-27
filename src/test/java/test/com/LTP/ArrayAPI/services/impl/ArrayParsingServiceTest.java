@@ -1,7 +1,7 @@
 package test.com.LTP.ArrayAPI.services.impl;
 
 import com.LTP.ArrayAPI.services.IArrayParsingService;
-import com.LTP.ArrayAPI.services.impl.ArrayParsingService;
+import com.LTP.ArrayAPI.services.impl.ArrayParsingServiceImpl;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -13,7 +13,7 @@ public class ArrayParsingServiceTest {
 
     @BeforeClass
     public void init(){
-        arrayParsingService = ArrayParsingService.getInstance();
+        arrayParsingService = ArrayParsingServiceImpl.getInstance();
     }
 
     @Test
