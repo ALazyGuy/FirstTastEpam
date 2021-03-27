@@ -26,6 +26,7 @@ public class ArrayValidator {
      * @return Is string valid
      */
     public static boolean validateArrayString(String line){
+        if(line == null || line.length() == 0) return false;
         String validPattern = "(\\-?\\d+(\\s+|\\s+\\-\\s+|,\\s+|$))*";
         return Pattern.matches(validPattern, line);
     }
