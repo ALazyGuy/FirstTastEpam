@@ -3,6 +3,8 @@ package com.LTP.ArrayAPI.validators;
 import com.LTP.ArrayAPI.enities.ArrayEntity;
 import com.LTP.ArrayAPI.exceptions.ArrayException;
 
+import java.util.regex.Pattern;
+
 public class ArrayValidator {
 
     /** Private constructor for singleton */
@@ -16,6 +18,16 @@ public class ArrayValidator {
     public static void validateArray(ArrayEntity arrayEntity) throws ArrayException{
         if(arrayEntity == null) throw new ArrayException("Input array cannot be null");
         if(arrayEntity.getArray().length == 0) throw new ArrayException("Input array cannot be empty");
+    }
+
+    /**
+     * validateArrayString allows you to check if there is possibility to parse input string to {@link ArrayEntity}
+     * @param line - input string to validate
+     * @return Is string valid
+     */
+    public static boolean validateArrayString(String line){
+        String validPattern = "(\\-?\\d+(\\s+|\\s+\\-\\s+|,\\s+|$))*";
+        return Pattern.matches(validPattern, line);
     }
 
 }
