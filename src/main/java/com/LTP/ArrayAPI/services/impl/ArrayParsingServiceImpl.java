@@ -16,21 +16,21 @@ import java.util.regex.Pattern;
  * @version 1.0.0 27 March 2021
  * @author Daniil Selin
  */
-public class ArrayParsingService implements IArrayParsingService {
+public class ArrayParsingServiceImpl implements IArrayParsingService {
 
-    private static final Logger LOGGER = LogManager.getLogger(ArrayParsingService.class);
-    private static ArrayParsingService instance;
+    private static final Logger LOGGER = LogManager.getLogger(ArrayParsingServiceImpl.class);
+    private static ArrayParsingServiceImpl instance;
 
     /** Private constructor for singleton pattern */
-    private ArrayParsingService(){}
+    private ArrayParsingServiceImpl(){}
 
     /**
      * getInstance method allows to get class instance in singleton pattern
      * @return static instance of current class
      */
-    public static ArrayParsingService getInstance(){
+    public static ArrayParsingServiceImpl getInstance(){
         if(instance == null){
-            instance = new ArrayParsingService();
+            instance = new ArrayParsingServiceImpl();
         }
 
         return instance;
