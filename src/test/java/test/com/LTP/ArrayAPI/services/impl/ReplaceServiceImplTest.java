@@ -34,6 +34,20 @@ public class ReplaceServiceImplTest {
         replaceService.replace(null, null, null);
     }
 
+    @Test(expectedExceptions = {ArrayException.class})
+    public void replaceByValueStreamTest() throws ArrayException  {
+        replaceService.replaceByValueStream(arrayEntity, a -> a % 2 == 0, -100);
+        AssertJUnit.assertArrayEquals(arrayEntity.getArray(), new int[]{5, 1, -100, -100, 45, -100, -19, -100});
+        replaceService.replaceByValueStream(null, null, -1);
+    }
+
+    @Test(expectedExceptions = {ArrayException.class})
+    public void replaceStreamTest() throws ArrayException {
+        replaceService.replaceStream(arrayEntity, a -> a % 2 == 0, a -> a * 2);
+        AssertJUnit.assertArrayEquals(arrayEntity.getArray(), new int[]{5, 1, -12, 0, 45, 0, -19, 4});
+        replaceService.replaceStream(null, null, null);
+    }
+
     @AfterClass
     public void terminate(){
         arrayEntity = null;
