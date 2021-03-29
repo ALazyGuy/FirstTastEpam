@@ -36,6 +36,22 @@ public class SearchServiceImplTest {
         searchService.findMinValue(null);
     }
 
+    @Test(expectedExceptions = {ArrayException.class})
+    public void findMaxValueStreamTest() throws ArrayException  {
+        int expected = 45;
+        int result = searchService.findMaxValueStream(arrayEntity);
+        AssertJUnit.assertEquals(expected, result);
+        searchService.findMaxValueStream(null);
+    }
+
+    @Test(expectedExceptions = {ArrayException.class})
+    public void findMinValueStreamTest() throws ArrayException {
+        int expected = -19;
+        int result = searchService.findMinValueStream(arrayEntity);
+        AssertJUnit.assertEquals(expected, result);
+        searchService.findMinValueStream(null);
+    }
+
     @AfterClass
     public void terminate(){
         arrayEntity = null;
