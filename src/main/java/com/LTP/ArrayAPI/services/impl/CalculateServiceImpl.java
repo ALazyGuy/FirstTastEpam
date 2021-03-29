@@ -148,8 +148,8 @@ public class CalculateServiceImpl implements ICalculateService {
         int[] array = arrayEntity.getArray();
         int result = 0;
 
-        for(int current : array){
-            result += current;
+        for( ; start <= stop; start++){
+            result += array[start];
         }
 
         LOGGER.log(Level.INFO, String.format("Sum of %s from index %d to index %d is %d",
