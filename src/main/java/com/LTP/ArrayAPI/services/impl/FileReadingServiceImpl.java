@@ -12,13 +12,26 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * FileReadingServiceImpl
+ *
+ * FileReadingServiceImpl allows to read data from file
+ *
+ * @version 1.0.0 27 March 2021
+ * @author Daniil Selin
+ */
 public class FileReadingServiceImpl implements IFileReadingService {
 
     private static final Logger LOGGER = LogManager.getLogger(FileReadingServiceImpl.class);
     private static FileReadingServiceImpl instance = null;
 
+    /** Private constructor for singleton pattern */
     private FileReadingServiceImpl(){}
 
+    /**
+     * getInstance method allows to get class instance in singleton pattern
+     * @return static instance of current class
+     */
     public static FileReadingServiceImpl getInstance(){
         if(instance == null){
             instance = new FileReadingServiceImpl();
@@ -27,6 +40,12 @@ public class FileReadingServiceImpl implements IFileReadingService {
         return instance;
     }
 
+    /**
+     * readLine methods allows to load first valid line from file "filename"
+     * @param filename - input file path
+     * @return first valid line
+     * @throws ArrayException will be thrown if no file found or no valid line found
+     */
     @Override
     public String readLine(String filename) throws ArrayException {
         if(filename == null){

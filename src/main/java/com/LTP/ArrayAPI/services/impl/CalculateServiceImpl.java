@@ -14,6 +14,9 @@ import java.util.Arrays;
  * CalculateService
  *
  * CalculateService class allows to do mathematical calculations with {@link ArrayEntity}
+ *
+ * @version 1.0.2 29 March 2021
+ * @author Daniil Selin
  */
 
 public class CalculateServiceImpl implements ICalculateService {

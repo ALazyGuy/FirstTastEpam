@@ -11,6 +11,9 @@ import org.apache.logging.log4j.Logger;
  * ArrayLoadingServiceImpl
  *
  * ArrayLoadingServiceImpl allows to get an {@link ArrayEntity} from file
+ *
+ * @version 1.0.2 29 March 2021
+ * @author Daniil Selin
  */
 public class ArrayLoadingServiceImpl implements IArrayLoadingService {
 

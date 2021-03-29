@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 
 /**
- * ArrayParsingService
+ * ArrayParsingServiceImpl
  *
  * ArrayParsingService allows to parse String to {@link ArrayEntity}
  *

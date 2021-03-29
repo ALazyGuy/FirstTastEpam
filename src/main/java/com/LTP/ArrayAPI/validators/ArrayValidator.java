@@ -5,6 +5,14 @@ import com.LTP.ArrayAPI.exceptions.ArrayException;
 
 import java.util.regex.Pattern;
 
+/**
+ * ArrayValidator
+ *
+ * ArrayValidator allows to validate if string or {@link ArrayEntity} is valid
+ *
+ * @version 1.0.2 29 March 2021
+ * @author Daniil Selin
+ */
 public class ArrayValidator {
 
     /** Private constructor for singleton */
