@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
 
 /**
  * ReplaceService
@@ -85,5 +86,38 @@ public class ReplaceServiceImpl implements IReplaceService {
         LOGGER.log(Level.INFO, String.format("Array %s after replace is %s", input, entity.toString()));
     }
 
+    /**
+     * replaceByValueStream method allows to replace every element that suitable by condition
+     *
+     * @param entity - ArrayEntity whose elements would be replaced
+     * @param condition - Condition to choose elements
+     * @param newValue - A new value for every element suitable by condition
+     */
+    @Override
+    public void replaceByValueStream(ArrayEntity entity, Predicate<Integer> condition, int newValue) throws ArrayException {
+        ArrayValidator.validateArray(entity);
+        if(condition == null) throw new ArrayException("Condition cannot be null");
+        String input = entity.toString();
+        int[] newValues = IntStream.of(entity.getArray()).map(a -> condition.test(a) ? newValue : a).toArray();
+        entity.setArray(newValues);
+        LOGGER.log(Level.INFO, String.format("Array %s after replaceByValue is %s", input, entity.toString()));
+    }
 
+    /**
+     * replaceByValueStream method allows to replace every element that suitable by condition
+     *
+     * @param entity - ArrayEntity whose elements would be replaced
+     * @param condition - Condition to choose elements
+     * @param function - Function to calculate a new value for every element suitable by condition
+     */
+    @Override
+    public void replaceStream(ArrayEntity entity, Predicate<Integer> condition, Function<Integer, Integer> function) throws ArrayException {
+        ArrayValidator.validateArray(entity);
+        if(condition == null) throw new ArrayException("Condition cannot be null");
+        if(function == null) throw new ArrayException("Function cannot be null");
+        String input = entity.toString();
+        int[] newValues = IntStream.of(entity.getArray()).map(a -> condition.test(a) ? function.apply(a) : a).toArray();
+        entity.setArray(newValues);
+        LOGGER.log(Level.INFO, String.format("Array %s after replace is %s", input, entity.toString()));
+    }
 }
