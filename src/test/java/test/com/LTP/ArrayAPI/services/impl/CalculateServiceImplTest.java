@@ -60,6 +60,46 @@ public class CalculateServiceImplTest {
         calculateService.countNegatives(null);
     }
 
+    @Test(expectedExceptions = ArrayException.class)
+    public void sumStreamTest() throws ArrayException{
+        int result = calculateService.sumStream(arrayEntity);
+        int expected = 21;
+        AssertJUnit.assertEquals(expected, result);
+        calculateService.sumStream(null);
+    }
+
+    @Test(expectedExceptions = {ArrayException.class})
+    public void sumBoundsStreamTest() throws ArrayException {
+        int result = calculateService.sumStream(arrayEntity, 1, 3);
+        int expected = 14;
+        AssertJUnit.assertEquals(expected, result);
+        calculateService.sumStream(null, -1, -1);
+    }
+
+    @Test(expectedExceptions = ArrayException.class)
+    public void positivesStreamTest() throws ArrayException {
+        int result = calculateService.countPositivesStream(arrayEntity);
+        int expected = 5;
+        AssertJUnit.assertEquals(expected, result);
+        calculateService.countPositivesStream(null);
+    }
+
+    @Test(expectedExceptions = ArrayException.class)
+    public void negativesStreamTest() throws ArrayException {
+        int result = calculateService.countNegativesStream(arrayEntity);
+        int expected = 0;
+        AssertJUnit.assertEquals(expected, result);
+        calculateService.countNegativesStream(null);
+    }
+
+    @Test(expectedExceptions = ArrayException.class)
+    public void averageStreamTest() throws ArrayException {
+        double result = calculateService.averageStream(arrayEntity);
+        double expected = 4.2;
+        AssertJUnit.assertEquals(expected, result);
+        calculateService.averageStream(null);
+    }
+
     @AfterClass
     public void terminate(){
         arrayEntity = null;
