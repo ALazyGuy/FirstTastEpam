@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.stream.IntStream;
+
 /**
  * SearchService
  *
@@ -75,4 +77,33 @@ public class SearchServiceImpl implements ISearchService {
         return min;
     }
 
+    /**
+     * Find maximal value in input array {@link ArrayEntity}
+     *
+     * @see SearchServiceImpl#findMinValueStream(ArrayEntity)
+     * @param arrayEntity input array
+     * @return Return maximal value in array
+     */
+    @Override
+    public int findMaxValueStream(ArrayEntity arrayEntity) throws ArrayException {
+        ArrayValidator.validateArray(arrayEntity);
+        int max = IntStream.of(arrayEntity.getArray()).max().getAsInt();
+        LOGGER.log(Level.INFO, String.format("Max value in array %s is %d", arrayEntity.toString(), max));
+        return max;
+    }
+
+    /**
+     * Find minimal value in input array {@link ArrayEntity}
+     *
+     * @see SearchServiceImpl#findMaxValueStream(ArrayEntity)
+     * @param arrayEntity input array
+     * @return Return minimal value in array
+     */
+    @Override
+    public int findMinValueStream(ArrayEntity arrayEntity) throws ArrayException {
+        ArrayValidator.validateArray(arrayEntity);
+        int min = IntStream.of(arrayEntity.getArray()).min().getAsInt();
+        LOGGER.log(Level.INFO, String.format("Min value in array %s is %d", arrayEntity.toString(), min));
+        return min;
+    }
 }
