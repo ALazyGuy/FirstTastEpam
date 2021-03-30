@@ -23,9 +23,8 @@ public class ArrayValidator {
      * @param arrayEntity - input array
      * @throws ArrayException will be thrown if array is invalid
      */
-    public static void validateArray(ArrayEntity arrayEntity) throws ArrayException{
-        if(arrayEntity == null) throw new ArrayException("Input array cannot be null");
-        if(arrayEntity.getArray().length == 0) throw new ArrayException("Input array cannot be empty");
+    public static boolean validateArray(ArrayEntity arrayEntity) throws ArrayException{
+        return arrayEntity != null && arrayEntity.getArray().length != 0;
     }
 
     /**
