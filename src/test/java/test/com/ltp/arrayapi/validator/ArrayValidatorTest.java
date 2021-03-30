@@ -12,8 +12,8 @@ public class ArrayValidatorTest {
     @DataProvider(name = "validateArrayData")
     public Object[][] getData(){
         return new Object[][]{
-                {null},
-                {new ArrayEntity(0)}
+                {null, false},
+                {new ArrayEntity(0), false}
         };
     }
 
@@ -30,9 +30,10 @@ public class ArrayValidatorTest {
         };
     }
 
-    @Test(expectedExceptions = ArrayException.class, dataProvider = "validateArrayData")
-    public void validateArrayTest(ArrayEntity arrayEntity) throws ArrayException{
-        ArrayValidator.validateArray(arrayEntity);
+    @Test(dataProvider = "validateArrayData")
+    public void validateArrayTest(ArrayEntity arrayEntity, boolean expected) throws ArrayException{
+        boolean actual = ArrayValidator.validateArray(arrayEntity);
+        AssertJUnit.assertEquals(expected, actual);
     }
 
     @Test(dataProvider = "validateLineData")
