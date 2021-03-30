@@ -18,7 +18,6 @@ import java.util.regex.Pattern;
  */
 public class ArrayParsingServiceImpl implements IArrayParsingService {
 
-    private static final Logger LOGGER = LogManager.getLogger(ArrayParsingServiceImpl.class);
     private static ArrayParsingServiceImpl instance;
 
     /** Private constructor for singleton pattern */

@@ -41,7 +41,10 @@ public class SortingServiceImpl implements ISortingService {
      */
     @Override
     public void bubbleSort(ArrayEntity arrayEntity) throws ArrayException {
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         int[] array = arrayEntity.getArray();
 
         boolean sorted = false;
@@ -68,7 +71,10 @@ public class SortingServiceImpl implements ISortingService {
      */
     @Override
     public void insertionSort(ArrayEntity arrayEntity) throws ArrayException{
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         int[] array = arrayEntity.getArray();
 
         for (int i = 1; i < array.length; i++) {
@@ -91,7 +97,10 @@ public class SortingServiceImpl implements ISortingService {
      */
     @Override
     public void selectionSort(ArrayEntity arrayEntity) throws ArrayException {
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         int[] array = arrayEntity.getArray();
 
         for (int i = 0; i < array.length; i++) {

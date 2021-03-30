@@ -50,8 +50,14 @@ public class ReplaceServiceImpl implements IReplaceService {
      */
     @Override
     public void replaceByValue(ArrayEntity entity, Predicate<Integer> condition, int newValue) throws ArrayException {
-        ArrayValidator.validateArray(entity);
-        if(condition == null) throw new ArrayException("Condition cannot be null");
+        if(ArrayValidator.validateArray(entity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
+        if(condition == null){
+            throw new ArrayException("Condition cannot be null");
+        }
+
         String input = entity.toString();
         int[] arr = entity.getArray();
         for(int d = 0; d < arr.length; d++){
@@ -72,9 +78,18 @@ public class ReplaceServiceImpl implements IReplaceService {
      */
     @Override
     public void replace(ArrayEntity entity, Predicate<Integer> condition, Function<Integer, Integer> function) throws ArrayException{
-        ArrayValidator.validateArray(entity);
-        if(condition == null) throw new ArrayException("Condition cannot be null");
-        if(function == null) throw new ArrayException("Function cannot be null");
+        if(ArrayValidator.validateArray(entity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
+        if(condition == null){
+            throw new ArrayException("Condition cannot be null");
+        }
+
+        if(function == null){
+            throw new ArrayException("Function cannot be null");
+        }
+
         String input = entity.toString();
         int[] arr = entity.getArray();
         for(int d = 0; d < arr.length; d++){
@@ -95,8 +110,14 @@ public class ReplaceServiceImpl implements IReplaceService {
      */
     @Override
     public void replaceByValueStream(ArrayEntity entity, Predicate<Integer> condition, int newValue) throws ArrayException {
-        ArrayValidator.validateArray(entity);
-        if(condition == null) throw new ArrayException("Condition cannot be null");
+        if(ArrayValidator.validateArray(entity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
+        if(condition == null){
+            throw new ArrayException("Condition cannot be null");
+        }
+
         String input = entity.toString();
         int[] newValues = IntStream.of(entity.getArray()).map(a -> condition.test(a) ? newValue : a).toArray();
         entity.setArray(newValues);
@@ -112,9 +133,18 @@ public class ReplaceServiceImpl implements IReplaceService {
      */
     @Override
     public void replaceStream(ArrayEntity entity, Predicate<Integer> condition, Function<Integer, Integer> function) throws ArrayException {
-        ArrayValidator.validateArray(entity);
-        if(condition == null) throw new ArrayException("Condition cannot be null");
-        if(function == null) throw new ArrayException("Function cannot be null");
+        if(ArrayValidator.validateArray(entity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
+        if(condition == null){
+            throw new ArrayException("Condition cannot be null");
+        }
+
+        if(function == null){
+            throw new ArrayException("Function cannot be null");
+        }
+
         String input = entity.toString();
         int[] newValues = IntStream.of(entity.getArray()).map(a -> condition.test(a) ? function.apply(a) : a).toArray();
         entity.setArray(newValues);

@@ -48,11 +48,16 @@ public class SearchServiceImpl implements ISearchService {
      */
     @Override
     public int findMaxValue(ArrayEntity arrayEntity) throws ArrayException {
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         int arr[] = arrayEntity.getArray();
         int max = arr[0];
         for(int d = 1; d < arr.length; d++){
-            if(max < arr[d]) max = arr[d];
+            if(max < arr[d]){
+                max = arr[d];
+            }
         }
         LOGGER.log(Level.INFO, String.format("Max value in array %s is %d", arrayEntity.toString(), max));
         return max;
@@ -67,11 +72,16 @@ public class SearchServiceImpl implements ISearchService {
      */
     @Override
     public int findMinValue(ArrayEntity arrayEntity) throws ArrayException{
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         int arr[] = arrayEntity.getArray();
         int min = arr[0];
         for(int d = 1; d < arr.length; d++){
-            if(min > arr[d]) min = arr[d];
+            if(min > arr[d]){
+                min = arr[d];
+            }
         }
         LOGGER.log(Level.INFO, String.format("Min value in array %s is %d", arrayEntity.toString(), min));
         return min;
@@ -86,7 +96,10 @@ public class SearchServiceImpl implements ISearchService {
      */
     @Override
     public int findMaxValueStream(ArrayEntity arrayEntity) throws ArrayException {
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         int max = IntStream.of(arrayEntity.getArray()).max().getAsInt();
         LOGGER.log(Level.INFO, String.format("Max value in array %s is %d", arrayEntity.toString(), max));
         return max;
@@ -101,7 +114,10 @@ public class SearchServiceImpl implements ISearchService {
      */
     @Override
     public int findMinValueStream(ArrayEntity arrayEntity) throws ArrayException {
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         int min = IntStream.of(arrayEntity.getArray()).min().getAsInt();
         LOGGER.log(Level.INFO, String.format("Min value in array %s is %d", arrayEntity.toString(), min));
         return min;

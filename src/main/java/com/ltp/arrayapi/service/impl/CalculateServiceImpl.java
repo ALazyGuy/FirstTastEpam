@@ -45,7 +45,10 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public double averageStream(ArrayEntity arrayEntity) throws ArrayException {
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         double average = Arrays.stream(arrayEntity.getArray()).average().getAsDouble();
         LOGGER.log(Level.INFO, String.format("Average of an %s is %f", arrayEntity.toString(), average));
         return average;
@@ -59,7 +62,10 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int sumStream(ArrayEntity arrayEntity) throws ArrayException{
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         return sumStream(arrayEntity, 0, arrayEntity.getArray().length - 1);
     }
 
@@ -71,8 +77,14 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int sumStream(ArrayEntity arrayEntity, int start, int stop) throws ArrayException{
-        ArrayValidator.validateArray(arrayEntity);
-        if(start < 0 || start >= stop || stop >= arrayEntity.getArray().length) throw new ArrayException("Invalid bounds in input array");
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
+        if(start < 0 || start >= stop || stop >= arrayEntity.getArray().length){
+            throw new ArrayException("Invalid bounds in input array");
+        }
+
         int result = Arrays.stream(arrayEntity.getArray()).skip(start).limit(stop - start + 1).sum();
         LOGGER.log(Level.INFO, String.format("Sum of %s from index %d to index %d is %d",
                                              arrayEntity.toString(),
@@ -90,7 +102,10 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int countPositivesStream(ArrayEntity arrayEntity) throws ArrayException{
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         int result = (int)Arrays.stream(arrayEntity.getArray()).filter(a -> a >= 0).count();
         LOGGER.log(Level.INFO, String.format("Count of positive numbers in %s is %d", arrayEntity.toString(), result));
         return result;
@@ -104,7 +119,10 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int countNegativesStream(ArrayEntity arrayEntity) throws ArrayException{
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         int result = arrayEntity.getArray().length - countPositivesStream(arrayEntity);
         LOGGER.log(Level.INFO, String.format("Count of negative numbers in %s is %d", arrayEntity.toString(), result));
         return result;
@@ -117,7 +135,10 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public double average(ArrayEntity arrayEntity) throws ArrayException {
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         int[] array = arrayEntity.getArray();
         double average = sum(arrayEntity);
         average /= array.length;
@@ -133,7 +154,10 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int sum(ArrayEntity arrayEntity) throws ArrayException {
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         return sumStream(arrayEntity, 0, arrayEntity.getArray().length - 1);
     }
 
@@ -145,8 +169,13 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int sum(ArrayEntity arrayEntity, int start, int stop) throws ArrayException {
-        ArrayValidator.validateArray(arrayEntity);
-        if(start < 0 || start >= stop || stop >= arrayEntity.getArray().length) throw new ArrayException("Invalid bounds in input array");
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
+        if(start < 0 || start >= stop || stop >= arrayEntity.getArray().length){
+            throw new ArrayException("Invalid bounds in input array");
+        }
 
         int[] array = arrayEntity.getArray();
         int result = 0;
@@ -172,7 +201,9 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int countPositives(ArrayEntity arrayEntity) throws ArrayException {
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
 
         int result = 0;
         int[] array = arrayEntity.getArray();
@@ -194,7 +225,10 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int countNegatives(ArrayEntity arrayEntity) throws ArrayException {
-        ArrayValidator.validateArray(arrayEntity);
+        if(ArrayValidator.validateArray(arrayEntity)){
+            throw new ArrayException("Invalid input array [empty or null]");
+        }
+
         int result = arrayEntity.getArray().length - countPositives(arrayEntity);
         LOGGER.log(Level.INFO, String.format("Count of negative numbers in %s is %d", arrayEntity.toString(), result));
         return result;
