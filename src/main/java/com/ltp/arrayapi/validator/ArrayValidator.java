@@ -3,6 +3,8 @@ package com.ltp.arrayapi.validator;
 import com.ltp.arrayapi.entity.ArrayEntity;
 import com.ltp.arrayapi.exception.ArrayException;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
 /**
@@ -36,6 +38,15 @@ public class ArrayValidator {
         if(line == null || line.length() == 0) return false;
         String validPattern = "(\\-?\\d+(\\s+|\\s+\\-\\s+|,\\s+|$))*";
         return Pattern.matches(validPattern, line);
+    }
+
+    /**
+     * validateArrayString allows you to check if there is possibility to parse input string to {@link ArrayEntity}
+     * @param path - input string to validate
+     * @return Is string valid
+     */
+    public static boolean validateFilePath(String path){
+        return path != null && path.length() != 0 && Files.exists(Paths.get(path));
     }
 
 }
