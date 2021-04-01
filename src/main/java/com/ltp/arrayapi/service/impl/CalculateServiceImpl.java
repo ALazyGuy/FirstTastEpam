@@ -45,7 +45,7 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public double averageStream(ArrayEntity arrayEntity) throws ArrayException {
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -62,7 +62,7 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int sumStream(ArrayEntity arrayEntity) throws ArrayException{
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -77,7 +77,7 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int sumStream(ArrayEntity arrayEntity, int start, int stop) throws ArrayException{
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -102,7 +102,7 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int countPositivesStream(ArrayEntity arrayEntity) throws ArrayException{
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -119,7 +119,7 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int countNegativesStream(ArrayEntity arrayEntity) throws ArrayException{
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -135,7 +135,7 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public double average(ArrayEntity arrayEntity) throws ArrayException {
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -169,7 +169,7 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int sum(ArrayEntity arrayEntity, int start, int stop) throws ArrayException {
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -201,7 +201,7 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int countPositives(ArrayEntity arrayEntity) throws ArrayException {
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -225,7 +225,7 @@ public class CalculateServiceImpl implements ICalculateService {
      */
     @Override
     public int countNegatives(ArrayEntity arrayEntity) throws ArrayException {
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 

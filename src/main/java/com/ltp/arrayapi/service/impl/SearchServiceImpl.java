@@ -48,7 +48,7 @@ public class SearchServiceImpl implements ISearchService {
      */
     @Override
     public int findMaxValue(ArrayEntity arrayEntity) throws ArrayException {
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -72,7 +72,7 @@ public class SearchServiceImpl implements ISearchService {
      */
     @Override
     public int findMinValue(ArrayEntity arrayEntity) throws ArrayException{
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -96,7 +96,7 @@ public class SearchServiceImpl implements ISearchService {
      */
     @Override
     public int findMaxValueStream(ArrayEntity arrayEntity) throws ArrayException {
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -114,7 +114,7 @@ public class SearchServiceImpl implements ISearchService {
      */
     @Override
     public int findMinValueStream(ArrayEntity arrayEntity) throws ArrayException {
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 

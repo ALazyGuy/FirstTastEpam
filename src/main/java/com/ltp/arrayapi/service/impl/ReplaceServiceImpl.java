@@ -50,7 +50,7 @@ public class ReplaceServiceImpl implements IReplaceService {
      */
     @Override
     public void replaceByValue(ArrayEntity entity, Predicate<Integer> condition, int newValue) throws ArrayException {
-        if(ArrayValidator.validateArray(entity)){
+        if(!ArrayValidator.validateArray(entity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -78,7 +78,7 @@ public class ReplaceServiceImpl implements IReplaceService {
      */
     @Override
     public void replace(ArrayEntity entity, Predicate<Integer> condition, Function<Integer, Integer> function) throws ArrayException{
-        if(ArrayValidator.validateArray(entity)){
+        if(!ArrayValidator.validateArray(entity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -110,7 +110,7 @@ public class ReplaceServiceImpl implements IReplaceService {
      */
     @Override
     public void replaceByValueStream(ArrayEntity entity, Predicate<Integer> condition, int newValue) throws ArrayException {
-        if(ArrayValidator.validateArray(entity)){
+        if(!ArrayValidator.validateArray(entity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -133,7 +133,7 @@ public class ReplaceServiceImpl implements IReplaceService {
      */
     @Override
     public void replaceStream(ArrayEntity entity, Predicate<Integer> condition, Function<Integer, Integer> function) throws ArrayException {
-        if(ArrayValidator.validateArray(entity)){
+        if(!ArrayValidator.validateArray(entity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 

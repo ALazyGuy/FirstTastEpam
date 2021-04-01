@@ -41,7 +41,7 @@ public class SortingServiceImpl implements ISortingService {
      */
     @Override
     public void bubbleSort(ArrayEntity arrayEntity) throws ArrayException {
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -71,7 +71,7 @@ public class SortingServiceImpl implements ISortingService {
      */
     @Override
     public void insertionSort(ArrayEntity arrayEntity) throws ArrayException{
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
@@ -97,7 +97,7 @@ public class SortingServiceImpl implements ISortingService {
      */
     @Override
     public void selectionSort(ArrayEntity arrayEntity) throws ArrayException {
-        if(ArrayValidator.validateArray(arrayEntity)){
+        if(!ArrayValidator.validateArray(arrayEntity)){
             throw new ArrayException("Invalid input array [empty or null]");
         }
 
