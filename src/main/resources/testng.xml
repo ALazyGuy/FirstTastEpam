@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Array testing">
+    <test name="Services">
+        <classes>
+            <class name="test.com.ltp.arrayapi.service.impl.ArrayLoadingServiceImplTest"/>
+            <class name="test.com.ltp.arrayapi.service.impl.ArrayParsingServiceTest"/>
+            <class name="test.com.ltp.arrayapi.service.impl.CalculateServiceImplTest"/>
+            <class name="test.com.ltp.arrayapi.service.impl.FileReadingServiceTest"/>
+            <class name="test.com.ltp.arrayapi.service.impl.ReplaceServiceImplTest"/>
+            <class name="test.com.ltp.arrayapi.service.impl.SearchServiceImplTest"/>
+            <class name="test.com.ltp.arrayapi.service.impl.SortingServiceImplTest"/>
+        </classes>
+    </test>
+    <test name="Validator">
+        <classes>
+            <class name="test.com.ltp.arrayapi.validator.ArrayValidatorTest"/>
+        </classes>
+    </test>
+</suite>
