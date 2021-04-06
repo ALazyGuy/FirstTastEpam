@@ -9,9 +9,13 @@
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="${mainPattern}" />
         </Console>
-        <File name="FileAppender" filename="logs/logfile.log">
+        <RollingFile name="FileAppender" filename="logs/logfile.log" filePattern="logs/logfile.%i.log.gz">
             <PatternLayout pattern="${mainPattern}"/>
-        </File>
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="5 KB" />
+            </Policies>
+        </RollingFile>
     </Appenders>
     <Loggers>
         <Root level="debug">
